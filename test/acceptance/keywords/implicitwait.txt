@@ -1,0 +1,92 @@
+*** Settings ***
+#Test Setup      Go To Page "javascript/dynamic.html"
+#Test Setup      Go To Page "javascript/dynamic_timeout.html?timeout=4000"
+Resource        ../resource.txt
+
+*** Test Cases ***
+Implicit Wait 10 seconds For 4000 Element
+    Set Selenium Speed  0 seconds
+    Set Selenium Timeout  0 seconds
+    Set Selenium Implicit Wait  10 seconds
+    Go To Page "javascript/dynamic_timeout.html?timeout=4000"
+    Page Should Not Contain Element  css=html body div#box0.redbox
+    Click Element  adder
+    Page Should Contain Element  css=html body div#box0.redbox
+
+Implicit Wait 0.5 seconds For 4000 Element
+    Set Selenium Speed  0 seconds
+    Set Selenium Timeout  0 seconds
+    Set Selenium Implicit Wait  0.5 seconds
+    Go To Page "javascript/dynamic_timeout.html?timeout=4000"
+    Page Should Not Contain Element  css=html body div#box0.redbox
+    Click Element  adder
+    Page Should Not Contain Element  css=html body div#box0.redbox
+
+Implicit Wait 0 seconds For 4000 Element
+    Set Selenium Speed  0 seconds
+    Set Selenium Timeout  0 seconds
+    Set Selenium Implicit Wait  0 seconds
+    Go To Page "javascript/dynamic_timeout.html?timeout=4000"
+    Page Should Not Contain Element  css=html body div#box0.redbox
+    Click Element  adder
+    Page Should Not Contain Element  css=html body div#box0.redbox
+
+Implicit Wait 10 seconds For 6000 Element
+    Set Selenium Speed  0 seconds
+    Set Selenium Timeout  0 seconds
+    Set Selenium Implicit Wait  10 seconds
+    Go To Page "javascript/dynamic_timeout.html?timeout=6000"
+    Page Should Not Contain Element  css=html body div#box0.redbox
+    Click Element  adder
+    Page Should Contain Element  css=html body div#box0.redbox
+
+Implicit Wait 0.5 seconds For 6000 Element
+    Set Selenium Speed  0 seconds
+    Set Selenium Timeout  0 seconds
+    Set Selenium Implicit Wait  0.5 seconds
+    Go To Page "javascript/dynamic_timeout.html?timeout=6000"
+    Page Should Not Contain Element  css=html body div#box0.redbox
+    Click Element  adder
+    Page Should Not Contain Element  css=html body div#box0.redbox
+
+Implicit Wait 0 seconds For 6000 Element
+    Set Selenium Speed  0 seconds
+    Set Selenium Timeout  0 seconds
+    Set Selenium Implicit Wait  0 seconds
+    Go To Page "javascript/dynamic_timeout.html?timeout=6000"
+    Page Should Not Contain Element  css=html body div#box0.redbox
+    Click Element  adder
+    Page Should Not Contain Element  css=html body div#box0.redbox
+
+Implicit Wait 10 seconds For 10000 Element
+    Set Selenium Speed  0 seconds
+    Set Selenium Timeout  0 seconds
+    Set Selenium Implicit Wait  10 seconds
+    Go To Page "javascript/dynamic_timeout.html?timeout=10000"
+    Page Should Not Contain Element  css=html body div#box0.redbox
+    Click Element  adder
+    Page Should Contain Element  css=html body div#box0.redbox
+
+Implicit Wait 0.5 seconds For 10000 Element
+    Set Selenium Speed  0 seconds
+    Set Selenium Timeout  0 seconds
+    Set Selenium Implicit Wait  0.5 seconds
+    Go To Page "javascript/dynamic_timeout.html?timeout=10000"
+    Page Should Not Contain Element  css=html body div#box0.redbox
+    Click Element  adder
+    Page Should Not Contain Element  css=html body div#box0.redbox
+
+Implicit Wait 0 seconds For 10000 Element
+    Set Selenium Speed  0 seconds
+    Set Selenium Timeout  0 seconds
+    Set Selenium Implicit Wait  0 seconds
+    Go To Page "javascript/dynamic_timeout.html?timeout=10000"
+    Page Should Not Contain Element  css=html body div#box0.redbox
+    Click Element  adder
+    Page Should Not Contain Element  css=html body div#box0.redbox
+
+No Element
+    Set Selenium Speed  0 seconds
+    Set Selenium Timeout  0 seconds
+    Set Selenium Implicit Wait  0 seconds
+    Page Should Not Contain Element  css=html body div#box0.redbox
