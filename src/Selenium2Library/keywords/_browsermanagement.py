@@ -173,8 +173,11 @@ class _BrowserManagementKeywords(KeywordGroup):
         details about locating elements.
         """
         self._info("Selecting frame '%s'." % locator)
-        element = self._element_find(locator, True, True, tag=['frame','iframe'])
-        self._current_browser().switch_to_frame(element)
+        element = self._element_find(locator, False, False, tag='frame')
+        element.extend(self._element_find(locator, False, False, tag='iframe'))
+        if len(element) == 0:
+            raise ValueError("Element locator '" + locator + "' did not match any elements.")
+        self._current_browser().switch_to_frame(element[0])
 
     def select_window(self, locator=None):
         """Selects the window found with `locator` as the context of actions.

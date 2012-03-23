@@ -508,9 +508,11 @@ return !element.dispatchEvent(evt);
 
     def _frame_contains(self, locator, text):
         browser = self._current_browser()
-
-        element = self._element_find(locator, True, True, ['frame','iframe'])
-        browser.switch_to_frame(element)
+        element = self._element_find(locator, False, False, 'frame')
+        element.extend(self._element_find(locator, False, False, 'iframe'))
+        if len(element) == 0:
+            raise ValueError("Element locator '" + locator + "' did not match any elements.")
+        browser.switch_to_frame(element[0])
         self._info("Searching for text from frame '%s'." % locator)
         found = self._is_text_present(text)
         browser.switch_to_default_content()
